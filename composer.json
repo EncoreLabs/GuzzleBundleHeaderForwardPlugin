@@ -33,7 +33,6 @@
         }
     ],
     "require": {
-        "php": "^7.1",
         "guzzlehttp/guzzle": "^6.0",
         "eightpoints/guzzle-bundle": "~8.0",
         "symfony/http-kernel": "~5.0",
