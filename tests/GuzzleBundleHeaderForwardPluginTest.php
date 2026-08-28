@@ -5,6 +5,7 @@ namespace EncoreLabs\Bundle\GuzzleBundleHeaderForwardPlugin\Tests;
 use EncoreLabs\Bundle\GuzzleBundleHeaderForwardPlugin\GuzzleBundleHeaderForwardPlugin;
 use EncoreLabs\Bundle\GuzzleBundleHeaderForwardPlugin\Middleware\GuzzleForwardHeaderMiddleware;
 use GuzzleHttp\HandlerStack;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Processor;
@@ -74,9 +75,7 @@ class GuzzleBundleHeaderForwardPluginTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider inertConfigurations
-     */
+    #[DataProvider('inertConfigurations')]
     public function testNothingIsRegisteredWhenThePluginHasNoWorkToDo(array $config): void
     {
         $container = new ContainerBuilder();
