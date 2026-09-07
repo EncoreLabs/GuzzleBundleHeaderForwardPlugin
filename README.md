@@ -4,7 +4,8 @@ This plugin integrates a way to forward headers from the current symfony request
 
 
 ## Requirements
- - PHP 7.0 or above
+ - PHP 8.0 or above (8.2 or above on Symfony 7)
+ - Symfony 5.4, 6.4 or 7.x
  - [Guzzle Bundle][1]
 
  
@@ -15,7 +16,7 @@ Using [composer][2]:
 ``` json
 {
     "require": {
-        "encore-labs/guzzle-bundle-header-forward-plugin": "^1.0"
+        "encore-labs/guzzle-bundle-header-forward-plugin": "^4.2"
     }
 }
 ```
