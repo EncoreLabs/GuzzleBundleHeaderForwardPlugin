@@ -51,7 +51,7 @@ class GuzzleForwardHeaderMiddleware
 
             foreach ($this->headers as $header) {
                 if ($currentRequest->headers->has($header)) {
-                    $request = $request->withHeader($header, $currentRequest->headers->get($header));
+                    $request = $request->withHeader($header, (string) $currentRequest->headers->get($header));
                 }
             }
 
