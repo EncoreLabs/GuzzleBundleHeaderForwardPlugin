@@ -26,6 +26,13 @@ class GuzzleForwardHeaderMiddlewareTest extends TestCase
         $this->assertFalse($forwarded->hasHeader('X-Secret'));
     }
 
+    public function testANullHeaderIsForwardedAsAnEmptyString(): void
+    {
+        $forwarded = $this->dispatch(['X-Request-Id'], ['HTTP_X_REQUEST_ID' => null]);
+
+        $this->assertSame([''], $forwarded->getHeader('X-Request-Id'));
+    }
+
     public function testAnEmptyRequestStackIsNotAnError(): void
     {
         $forwarded = $this->dispatch(['X-Request-Id'], null);
@@ -35,7 +42,7 @@ class GuzzleForwardHeaderMiddlewareTest extends TestCase
 
     /**
      * @param string[]             $headers configured for forwarding
-     * @param array<string, string>|null $server of the current request, or null for an empty request stack
+     * @param array<string, string|null>|null $server of the current request, or null for an empty request stack
      */
     private function dispatch(array $headers, ?array $server): RequestInterface
     {

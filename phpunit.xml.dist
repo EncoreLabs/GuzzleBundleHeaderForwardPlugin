@@ -2,10 +2,17 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
-         colors="true">
+         colors="true"
+         failOnDeprecation="true">
     <testsuites>
         <testsuite name="GuzzleBundleHeaderForwardPlugin">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
+    <!-- Symfony and guzzlehttp/psr7 raise deprecations with @trigger_error; PHPUnit drops them without this -->
+    <source ignoreSuppressionOfDeprecations="true">
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
 </phpunit>
